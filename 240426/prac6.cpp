@@ -14,32 +14,30 @@ void Erase_Vec(vector<int>& vec);
 void Push_Num_to_Vec(vector<int>& vec);
 
 int main() {
-	// 벡터 선언
+	// 1. 벡터 선언
 	vector<int> my_vec;
 
-	// 벡터의 크기를 SIZE 로 예약
-	my_vec.reserve(SIZE);
-
-	// SIZE 개의 정수를 입력받아 벡터에 추가하는 함수 호출
+	// 2. SIZE 개의 정수를 입력받아 벡터에 추가하는 함수 호출
 	Input_Add_Vector(my_vec);
 	
-	// 벡터의 크기 출력 & 할당
+	// 3. 벡터의 크기 출력 & 할당
 	int my_vec_size = Vec_Size(my_vec);
 
 	///////////////////////////////////////////////////////////
 
-	// 벡터의 모든 원소 출력
+	// 4. 벡터의 모든 원소 출력
+	cout << endl << "벡터에 있는 원소는 ";
 	Print_Vec(my_vec);
 
 	///////////////////////////////////////////////////////////
 
-	// 가장 큰 값을 찾기 & 출력
+	// 5. 가장 큰 값을 찾기 & 출력
 
 	cout << endl << "가장 큰 값은 " << *max_element(my_vec.begin(), my_vec.end()) << endl;
 
 	///////////////////////////////////////////////////////////
 
-	// 벡터의 모든 원소를 두배로
+	// 6. 벡터의 모든 원소를 두배로
 	for (int i = 0; i < my_vec_size; i++) {
 
 		my_vec[i] = Get_Double(my_vec[i]);
@@ -47,45 +45,37 @@ int main() {
 	}
 
 	// 벡터의 모든 원소 출력
-	cout << "[원소의 모든 값 2배 후 원소들의 값] ";
+	cout << endl << " ===> 모든 값 2배 후 원소들의 값: ";
 
 	Print_Vec(my_vec);
 
 	///////////////////////////////////////////////////////////
 
-	// 인덱스를 입력받아 해당 인덱스에 있는 원소 제거
+	// 7. 인덱스를 입력받아 해당 인덱스에 있는 원소 제거
 	Erase_Vec(my_vec);
 
-	
-	// 벡터의 크기 출력
-	cout << "제거 후 벡터의 크기 : ";
-	Vec_Size(my_vec);
-
 	// 벡터의 모든 원소 출력
-	cout << "제거 후 원소들의 값 : ";
+	cout << endl << " ===> 제거 후 원소들의 값 : ";
 	Print_Vec(my_vec);
 
 	///////////////////////////////////////////////////////////
 
-	// 인덱스를 입력받아 해당 인덱스에 있는 새로운 원소 삽입
+	// 8. 인덱스를 입력받아 해당 인덱스에 있는 새로운 원소 삽입
 	Push_Num_to_Vec(my_vec);
 
-	// 벡터의 크기 출력
-	cout << "추가 후 벡터의 크기 : ";
-	Vec_Size(my_vec);
-
 	// 벡터의 모든 원소 출력
-	cout << "추가 후 원소들의 값 : ";
+	cout << endl << " ===> 추가 후 원소들의 값 : ";
 	Print_Vec(my_vec);
 }
 
+// 2
 void Input_Add_Vector(vector<int> &vec) {
 
 	for (int i = 0; i < 5; i++) {
 
 		int num;
 
-		cout << "벡터에 추가할 " << i + 1 << "번째 정수를 입력하시오. (총 " << SIZE << "개 입력)" << endl;
+		cout << " Q. 벡터에 추가할 " << i + 1 << "번째 정수를 입력하시오. (총 " << SIZE << "개 입력)" << endl;
 
 		cin >> num;
 
@@ -93,6 +83,7 @@ void Input_Add_Vector(vector<int> &vec) {
 	}
 }
 
+// 3
 int Vec_Size(vector<int>& vec) {
 	int my_vec_size = vec.size();
 
@@ -101,9 +92,8 @@ int Vec_Size(vector<int>& vec) {
 	return my_vec_size;
 }
 
+// 4
 void Print_Vec(vector<int>& vec) {
-
-	cout << "벡터에 있는 원소는 ";
 
 	for (int num : vec) {
 
@@ -113,44 +103,39 @@ void Print_Vec(vector<int>& vec) {
 	cout << endl;
 }
 
+// 6
 int Get_Double(int x) {
 
 	return x * 2;
 
 }
 
+// 7
 void Erase_Vec(vector<int>& vec) {
 
 	int idx = 0;
 
-	cout << "제거를 원하는 값의 인덱스를 입력하시오. : ";
+	
+		cout << endl << " Q. 제거를 원하는 값의 인덱스를 입력하시오. ( 0 ~ " << vec.size() - 1 << " 사이의 값 입력 ) : ";
 
-	cin >> idx;
+		cin >> idx;
 
-	if (vec.at(idx) != NULL) {
 		vec.erase(vec.begin() + idx);
-	}
-	else {
-		cout << "해당 인덱스의 값이 존재하지 않습니다." << endl << "제거를 원하는 값의 인덱스를 입력하시오. : ";
-	}
-
 }
 
+// 8
 void Push_Num_to_Vec(vector<int>& vec) {
 	int idx;
 	int num;
 
-	cout << "추가를 원하는 값의 인덱스를 입력하시오. : ";
-
+	cout << endl << " Q. 추가를 원하는 값의 인덱스를 입력하시오. ( 0 ~ " << vec.size() << " 사이의 값 입력 ) : "; 
+	
 	cin >> idx;
 
-	cout << "추가를 원하는 값을 입력하시오. : ";
+	cout << endl << " Q. 추가를 원하는 값을 입력하시오. : ";
 
 	cin >> num;
 
 	vec.insert(vec.begin() + idx, num);
 	
 }
-//
-// v[2] 와 .at(2)의 차이?
-// => 벡터는 크기가 유동적임. 인덱스가 존재하는지부터 확인해주는 게 .at(인덱스)
