@@ -4,20 +4,20 @@
 using namespace std;
 
 void save_print_array(int **array , int m , int n){
-	// 배열에 1부터 x*y 까지 값으로 저장
+	// 배열에 1부터 x*y 까지 값으로 저장 후, 값을 출력
 	int num = 1;
-for (int i = 0; i < m; i++) {
 
-	cout << endl;
+	for (int i = 0; i < m; i++) {
 
-	for (int j = 0; j < n; j++) {
+		cout << endl;
 
-		array[i][j] = num;
-		cout << array[i][j] << " ";
-		num++;
+		for (int j = 0; j < n; j++) {
 
+			array[i][j] = num;
+			cout << array[i][j] << " ";
+			num++;
+		}
 	}
-}
 }
 
 int main() {
@@ -46,4 +46,10 @@ int main() {
 	}
 	// 2차원 배열에 값을 저장하고 출력하는 함수 호출
 	save_print_array(arr, x, y);
+	
+	// 동적 배열 해제(반납)
+	for (int i = 0; i < x; i++) {
+		delete[] arr[i];
+	}
+	delete[] arr;
 }
