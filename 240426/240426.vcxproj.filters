@@ -18,10 +18,10 @@
     <ClCompile Include="240426.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="prac5.cpp">
+    <ClCompile Include="prac5_matrix_dynamic_array.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="prac6.cpp">
+    <ClCompile Include="prac6_vector_func.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TimeClock.cpp">
